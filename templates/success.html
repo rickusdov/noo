@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+</head>
+    <style>
+        h2 {
+  font-size: 30px;
+}
+    </style>
+<body>
+    <p>Welcome back, {{session.name}}</p>
+    {% if session.role == 'admin' %}
+<right><a href="/stock_display">
+   <input type="button" value="Stock level" />
+    </a></right>
+{% endif %}
+
+<right><a href="/sign_out">
+   <input type="button" value="Logout" />
+    
+    </a></right>
+    <table>
+    <center><h2>You purchased</h2></center>
+  <tr>
+    <th>Cover image</th>
+    <th>Name</th>
+    <th>Retail price</th>
+    <th>Quantity</th> 
+  </tr>
+    {% for line in session.cart %}
+    <tr>
+    <td><img src={{line[0]}} style="width:100px;height:150px;"></td>
+    <td>{{line[1]}}</td>
+    <td>{{line[4]}} &pound</td>
+    <td>{{line[3]}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+    <br>
+    <br>
+    <br>
+    <center><h2>Thank you for shopping with us</h2></center>
+    <center><a href="/success-to-home">
+   <input type="button" value="Home" />
+    </a></center>
+</body>
+</html>

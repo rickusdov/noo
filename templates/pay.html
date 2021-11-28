@@ -1,0 +1,111 @@
+<html>
+    <head>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">   
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+    </head>
+<style>
+    
+    .input_area{
+        float: left;
+    }
+    label, textarea {
+    top: 50%;
+    width:180px;
+    clear:left;
+    text-align:left;
+    padding-right:10px;
+    font-weight: bold;
+}
+    input, label, textarea, output {
+    float:left;
+}
+    form{
+position: fixed; /* or absolute */
+left: 40%;
+top: 30%;
+    }
+    </style>
+<body>
+        <p>Welcome back, {{session.name}}</p>
+    {% if session.role == 'admin' %}
+<right><a href="/stock_display">
+   <input type="button" value="Stock level" />
+    </a></right>
+{% endif %}
+
+<right><a href="/sign_out">
+   <input type="button" value="Logout" />
+    
+    </a></right>
+    <table>
+    <center><h2>Shopping cart</h2></center>
+    <table>    
+    <tr>
+        <th>Quantity</th> 
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th> 
+        <th></th>
+    </tr>
+    {% for line in session.cart %}
+    <form action="" method="post"> 
+        <tr>
+            <td><img src={{line[0]}} style="width:100px;height:150px;"></td>
+            <td>{{line[1]}}</td>
+            <td>{{line[4]}} &pound</td>
+            <td>{{line[3]}}</td>
+            <td><a href="/delet_item">
+   <input type="button" value="Remove item" />
+    
+    </a></td>
+        </tr>
+    </form>
+    {% endfor %}
+    <tr>
+      
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+        <td></td></tr>
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+        
+      
+       
+    </table></table>
+            
+    <div class = 'row'>
+        
+    <div class = 'column'>
+        
+        
+    <form action="" method="post" enctype=multipart/form-data>
+    <label for="full_name">Full name</label>
+          <input type="text" name="full_name" id="full_name">
+   <label for="card_numbers">Credit card number</label>
+          <input type="number" name="card_numbers" id="card_numbers">
+   <label for="exp_date">Expiration date</label>
+          <input type="month" name="exp_date" id="exp_date">
+   <label for="cvv">CVV</label>
+        <input type="number" name="cvv" id="cvv">
+        <button type="submit" onclick="location.href = '/pay'" name="submit" access="false" style="success" id="submit">Proceed</button>
+        </form> </div></div>
+            
+    
+        <!--<form action="http://bruno-spark-5000.codio-box.uk/pay" method="POST">
+                  <input type="hidden" name="pid" value={{ session['pid'] }}>
+                  <input type="hidden" name="sid" value={{ session['sid'] }}>
+                  <input type="hidden" name="amount" value={{ session['total_price'] }}>         
+                  <input type="hidden" name="success_url" value="https://prefer-civil-5000.codio-box.uk/success">
+                  <input type="hidden" name="cancel_url" value="http://bruno-spark-5000.codio-box.uk/test/callback/cancel">
+                  <input type="hidden" name="error_url" value="http://bruno-spark-5000.codio-box.uk/test/callback/error">
+                  <input type="hidden" name="checksum"value={{ session['checksum'] }}>
+                <img src="https://part.lt/img/06e53b02289bfbe5d2f9c9dca8bb8473348.png" />Total bookss: {{session.total_quantity}} Total price: {{ session.total_price}} &pound
+            <input type="submit" value="Pay"></form></div></div> -->
+    </body>
+</html>

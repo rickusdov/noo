@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+<style>
+    
+    .input_area{
+        float: left;
+    }
+    label, textarea {
+    top: 50%;
+    width:180px;
+    clear:left;
+    text-align:left;
+    padding-right:10px;
+    font-weight: bold;
+}
+    input, label, textarea, output {
+    float:left;
+}
+    form{
+position: fixed; /* or absolute */
+left: 40%;
+top: 30%;
+    }
+    </style>
+        <p>Welcome back, {{session.name}}</p>
+    {% if session.role == 'admin' %}
+<right><a href="/stock_display">
+   <input type="button" value="Stock level" />
+    </a></right>
+{% endif %}
+
+<right><a href="/sign_out">
+   <input type="button" value="Logout" />
+    
+    </a></right>
+{% if session.name != ''  %}
+ <form action="" method="post" enctype=multipart/form-data>
+     <h1>STOCK LEVEL</h1>
+   <label for="isbm-13">ISBM-13</label>
+          <input type="text" name="isbm-13" id="isbm-13">
+   <label for="book-name">Book name</label>
+          <input type="text" name="book-name" id="book-name">
+   <label for="book-author">Book author</label>
+          <input type="text" name="book-author" id="book-author">
+   <label for="release-date">Release date</label>
+          <input type="date" name="release-date" id="release-date">
+   <label for="cover-image">Cover image</label>
+     <input type="text" name="cover-image" id="cover-image">
+          <!-- <input type="file" name="file" multiple="false" id="cover-image"> -->
+   <label for="retail_price">Retail price</label>
+          <input type="range" name = "retail-price" min="1" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
+     <output>0</output>
+   <label for="trade_price">Trade price</label>
+          <input type="range" name = "trade-price" min="1" max="100" value="0" oninput="this.nextElementSibling.value = this.value">
+     <output>0</output>
+   <label for="quantity">Quantity</label>
+          <input type="range" name = "quantity" min="1" max="20" value="0" oninput="this.nextElementSibling.value = this.value">
+     <output>0</output>
+   <label for="description">Description</label>
+   <textarea name="description" style="width:250px;height:150px;"></textarea>
+   <button type="submit" name="submit" access="false" style="success" id="submit">Add to inventory</button>
+     <a href="/home">
+   <input type="button" value="Home" />
+</a>
+  </form>
+     
+    </head>
+    {% endif %}
+</html>

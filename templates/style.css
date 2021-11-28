@@ -1,0 +1,52 @@
+
+body {
+  background-image: url('https://img.freepik.com/free-photo/background-topic-training-education-desk-with-books-bookcase-window-defocus-school-concept-greeting-card-with-start-learning_95018-358.jpg?size=626&ext=jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  
+  
+}
+label, textarea, a {
+    width:180px;
+    clear:left;
+    text-align:left;
+    padding-right:10px;
+    font-weight: bold;
+}
+form{
+position: fixed; /* or absolute */
+left: 40%;
+top: 20%;
+    }
+input, label, textarea, button, output {
+    float:left;
+}
+table{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+  float: center;
+  position: relative;
+  left: 20%;
+  overflow-y: scroll;
+
+}
+    tbody{
+        overflow: scroll;
+    }
+
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 5px;
+}
+    td{
+        border: 1px solid #dddddd;
+  text-align: center;
+  padding: 5px;
+    width: 20px;
+    }
+
+tr:nth-child(even) {
+  background-color: #dddddd;

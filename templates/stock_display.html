@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+        <p>Welcome back, {{session.name}}</p>
+    {% if session.role == 'admin' %}
+
+{% endif %}
+
+<right><a href="/sign_out">
+   <input type="button" value="Logout" />
+    
+    </a></right>
+    {% if session.name != ''  %}
+<table>
+  <tr>
+    <th>Cover image</th>
+    <th>Name</th>
+    <th>ISBM-13</th>
+    <th>Quantity</th> 
+    <th>Reduce item</th>
+  </tr>
+{% for line in db %} 
+  <tr>
+     <form action="" method="post">
+    <td><img src={{line[5]}} style="width:100px;height:150px;"></td>
+    <td>{{line[1]}}</td>
+    <td><input type="text" id="ISBM-13" name="ISBM-13" value={{line[0]}} readonly></td>
+      <td><input type="number" id="quantity_changed" name="quantity_changed" max="20", value={{line[8]}}></td>
+         <td><button type="submit" name="submit" access="false" style="success" id="submit" style="width=10px;">Change</button> *click 2 times</td>
+      </form>
+    </tr> 
+{% endfor %}
+    <tr><td><a href="/stock_level">
+   <input type="button" value="Add stock" /></a>
+    <a href="/home">
+   <input type="button" value="Home" /></a>
+        </td>
+    </tr>
+    </table>
+    {% endif %}
+     
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+<style>
+    
+    .input_area{
+        float: left;
+    }
+    h1{
+        font-size:24px;
+    }
+    label, textarea {
+    top: 50%;
+    width:180px;
+    clear:left;
+    text-align:left;
+    padding-right:10px;
+    font-weight: bold;
+}
+    input, label, textarea, output {
+    float:left;
+}
+    form{
+position: fixed; /* or absolute */
+left: 40%;
+top: 30%;
+    }
+    </style>
+ 
+ <form action="" method="post" enctype=multipart/form-data>
+     <h1>Login</h1>
+   <label for="username">Username:</label>
+          <input type="text" name="username" id="username">
+   <label for="password">Password</label>
+          <input type="password" name="password" id="password">
+     <div class='row'>
+         <div class='column'>
+         <button type="submit" name="submit" access="false" style="success" id="submit">Login</button>    
+         </div>
+       
+     
+     </div>
+  </form>
+    </head>
+</html>
